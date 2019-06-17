@@ -1,0 +1,35 @@
+# https://qiita.com/mikene_koko/items/46aba5b929765dbd25b5
+# basic option
+-enc=utf8      # 文字コードUTF-8(しかしwarning出る)
+-ole=unix      # 改行は LF
+-i=4           # スペース4つ
+-l=150         # 1行の長さが150文字以内に収まるようにする
+--check-syntax # 整形後 perl -c -T でチェック
+
+# code indentation control
+--closing-token-indentation=1 # 配列指定時などに、終了カッコを開始と同じ位置までインデント
+--nooutdent-long-quotes       # インデントされ過ぎた文字列があっても引き戻して来ない
+--nooutdent-long-lines        # インデントされ過ぎた行があっても引き戻して来ない
+
+# whitespace control
+--nospace-for-semicolon      # forループの指定のセミコロンの前にスペースを置かない
+--nospace-terminal-semicolon # セミコロンの前にスペースを置かない
+--add-semicolons             # 行末にセミコロンを置き、次の行に終わりの中括弧を置く
+--tight-secret-operators     # 0+$val などの特定の表現のときは 0 + $val の様なスペースを空けない
+--paren-tightness=2          # 括弧の中のスペースは開けない
+
+# comment control
+--minimum-space-to-comment=2 # 行末コメントとコードの間のスペースは2つ
+
+# line break control
+--opening-brace-always-on-right # 開き括弧は必ず右端に置く
+
+# controlling list formatting
+--maximum-fields-per-table=1     # 配列要素の指定を横に並べる数
+--break-at-old-comma-breakpoints # カンマの後の改行を変更しない
+
+# brank line control
+--keep-old-blank-lines=2 # 過去の空白行を消さない
+
+# overview
+--backup-and-modify-in-place # ファイルを書き換えて、整形前のファイルを.bak で保存する
