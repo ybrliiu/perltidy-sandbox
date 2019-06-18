@@ -67,14 +67,15 @@ my @month_of_year = (
     'Sep', 'Oct',
     'Nov', 'Dec'
 );
+
 bless { B => $B, Root => $Root }, $package;
 
 my $q = $rs
   ->related_resultset('CDs')
   ->related_resultset('Tracks')
-  ->search(
+  ->search({
     'track.id' => {-ident => 'none_search.id'},
-  )->as_query;
+  })->as_query;
 
 push @{ $self->{$module}{$key} }, {
     accno       => $ref->{accno},
@@ -82,12 +83,14 @@ push @{ $self->{$module}{$key} }, {
 };
 
 my @arys =
-    map { $_ }
+    map { +{ a => $_, b => $_ } }
     sort {  $a <=> $b }
     0 ..10;
 
 
 +{a=>1};
+(a=>1);
+([a=>1]);
 
 for $w1 (@w1) {
     for $w2 (@w2) {
@@ -95,3 +98,30 @@ for $w1 (@w1) {
             for $w4 (@w4) {
                 push( @lines, "$w1 $w2 $w3 $w4\n" );
             } } } }
+
+txn(sub {
+  $db->select('');
+});
+
+txn(do {
+  $db->select('');
+});
+
+do { {
+    next if $x == $y;
+} } until $x++ > $z;
+
+my (@date_time) = Localtime( Date_to_Time( Add_Delta_DHMS(
+    $year, $month,  $day, $hour, $minute, $second,
+    '0',   $offset, '0',  '0'
+) ) );
+
+
+({
+        a => 10,
+        b => 20,
+  });
+
+#<<<
++{a=>b}
+#>>>
